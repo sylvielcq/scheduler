@@ -9,13 +9,13 @@ export function getAppointmentsForDay(state, day) {
   // filteredDay[0] as we want to look into the object inside of the filteredDay array
   const filteredAppointmentsID = filteredDay[0].appointments;
 
-  // declaring a filteredAppointments array which will hold the day's appointments
+  // declaring a filteredAppointments array which will hold this day's appointments
   const filteredAppointments = [];
 
 
   filteredAppointmentsID.map(id => {
     filteredAppointments.push(state.appointments[id]);
   });
-  
+
   return filteredAppointments;
 };
