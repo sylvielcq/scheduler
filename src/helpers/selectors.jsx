@@ -17,5 +17,6 @@ export function getAppointmentsForDay(state, day) {
     filteredAppointments.push(state.appointments[id]);
   });
 
+  // returns an array of appointments for the given day
   return filteredAppointments;
 };
