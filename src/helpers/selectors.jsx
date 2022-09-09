@@ -20,3 +20,18 @@ export function getAppointmentsForDay(state, day) {
   // returns an array of appointments for the given day
   return filteredAppointments;
 };
+
+
+export function getInterview(state, interview) {
+  
+  if (!interview) {
+    return null;
+  }
+
+  const interviewerId = interview.interviewer;
+  
+  return {
+    student: interview.student,
+    interviewer: { ...state.interviewers[interviewerId] }
+  };
+};
