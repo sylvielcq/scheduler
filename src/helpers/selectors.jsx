@@ -1,3 +1,4 @@
+////// GET APPOINTMENTS FOR DAY
 export function getAppointmentsForDay(state, day) {
   const filteredDay = state.days.filter(dayItem => dayItem.name === day); // returns an array
 
@@ -22,6 +23,32 @@ export function getAppointmentsForDay(state, day) {
 };
 
 
+////// GET INTERVIEWERS FOR DAY
+export function getInterviewersForDay(state, day) {
+  const filteredDay = state.days.filter(dayItem => dayItem.name === day); // returns an array containing a Day object
+
+  // If there is no filteredDay
+  if (filteredDay.length === 0) {
+    return [];
+  }
+
+  // filteredDay[0] as we want to look into the object inside of the filteredDay array
+  const filteredInterviewersID = filteredDay[0].interviewers;
+
+  // declaring a filteredInterviewers array which will hold this day's interviewers
+  const filteredInterviewers = [];
+
+
+  filteredInterviewersID.forEach(id => {
+    filteredInterviewers.push(state.interviewers[id]);
+  });
+
+  // returns an array of appointments for the given day
+  return filteredInterviewers;
+};
+
+
+////// GET INTERVIEW
 export function getInterview(state, interview) {
   
   if (!interview) {
