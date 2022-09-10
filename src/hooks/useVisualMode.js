@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// For the transitions of the Appointment component
 export default function useVisualMode(initial) {
 
   const [mode, setMode] = useState(initial);
