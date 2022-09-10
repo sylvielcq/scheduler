@@ -13,7 +13,7 @@ export function getAppointmentsForDay(state, day) {
   const filteredAppointments = [];
 
 
-  filteredAppointmentsID.map(id => {
+  filteredAppointmentsID.forEach(id => {
     filteredAppointments.push(state.appointments[id]);
   });
 
