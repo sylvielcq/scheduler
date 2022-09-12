@@ -15,6 +15,17 @@ export default function Application(props) {
     interviewers: {}
   });
 
+  // API calls to get days and appointments data
+  useEffect(() => {
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments'),
+      axios.get('/api/interviewers')
+    ]).then((all) => {
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
+    });
+  }, []);
+
   // updates only the day in the State
   const setDay = day => setState({ ...state, day });
 
@@ -28,26 +39,21 @@ export default function Application(props) {
   // array of interviewers for a certain day, using a helper selector function
   const interviewers = getInterviewersForDay(state, state.day);
 
+  const bookInterview = (id, interview) => {
+    console.log(id, interview);
+  };
+
     return (
       <Appointment
         key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
         interview={interview}
         interviewers={interviewers}
-        {...appointment}
+        bookInterview={bookInterview}
       />
     )
   });
-
-  // API calls to get days and appointments data
-  useEffect(() => {
-    Promise.all([
-      axios.get('/api/days'),
-      axios.get('/api/appointments'),
-      axios.get('/api/interviewers')
-    ]).then((all) => {
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
-    });
-  }, []);
 
 
   return (
@@ -78,4 +84,4 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
+};
