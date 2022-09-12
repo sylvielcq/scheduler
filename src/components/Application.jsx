@@ -41,6 +41,24 @@ export default function Application(props) {
 
   const bookInterview = (id, interview) => {
     console.log(id, interview);
+
+    // Updatimg each level of state, starting with the most nested one
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios
+      .put(`/api/appointments/${id}`, appointment)
+      .then(setState((prev) => ({...prev, appointments})))
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
     return (
