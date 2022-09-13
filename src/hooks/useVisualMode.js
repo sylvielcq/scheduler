@@ -8,34 +8,22 @@ export default function useVisualMode(initial) {
 
   // transition from one mode to another, add the newmode to the history array
   const transition = (newMode, replace = false) => {
-    console.log("NEWMODE ", newMode)
-
+    
+    if (replace) {                          // if replace is true, just re-render the prev history
+      setMode(newMode);
+      setHistory((prev) => [...prev]);
+    } else {                                // if replace if false (default), add newMode to history
     setMode(newMode);
-
-    if (!replace) {  
-      console.log("REPLACE IS FALSE", history)              // if replace is false, add the newMode to the history array
-      setHistory(prev => [...prev, newMode]);
+    setHistory((prev) => [...prev, newMode]);
     }
-
-    if (replace) {     
-      console.log("REPLACE IS TRUE", history)             // if replace is true, replace the last history item by the newMode
-      history.pop();
-      console.log("HISTORY AFTER POP: ", history)
-      setHistory(prev => [...prev, newMode]);
-    }
-
-    console.log("HISTORY FINAL :", history)
   };
 
+  // go back to the previous mode, removes the last mode from the history array
   const back = () => {
-    console.log('IN BACK FUNCTION :', history)
-    
-    if (history.length > 1) {
-    history.pop();
-    console.log("IN BACK(), HISTORY AFTER POP", history)
-    setMode(history[history.length -1]);
+    if (history.length !== 0) {
+      history.pop();
+      setMode(history[history.length - 1]);
     }
-
   };
 
   return { 
@@ -45,21 +33,5 @@ export default function useVisualMode(initial) {
   };
 };
 
-// const transition = (newMode, replace = false) => {
-  //   if (replace) {
-  //     setMode(newMode);
-  //     setHistory((prev) => [...prev]); 
-  //   } else {       
-  //     setMode(newMode);       
-  //     setHistory((prev) => [...prev, newMode]);     
-  //   }   
-  // };    
-  // const back = () => {     
-  //   if (history.length !== 0) {       
-  //     history.pop();       
-  //     setMode(history[history.length - 1]);     
-  //   }   
-  // };
 
-  // console.log("IN BETWEEN", history)
-  // go back to the previous mode, removes the last mode from the history array
+ 
