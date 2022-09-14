@@ -20,7 +20,7 @@ export default function useVisualMode(initial) {
 
   // go back to the previous mode, removes the last mode from the history array
   const back = () => {
-    if (history.length !== 0) {
+    if (history.length > 1) {
       history.pop();
       setMode(history[history.length - 1]);
     }
