@@ -10,7 +10,6 @@ import useVisualMode from "hooks/useVisualMode";
 import "./styles.scss";
 
 
-
 export default function Appointment(props) {
 
   const EMPTY = "EMPTY";

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function useApplicationData() {
 
-  // STATE
+  // INITIAL STATE
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -37,17 +37,23 @@ export default function useApplicationData() {
 
 
   // UPDATE AVAILABLE SPOTS FOR A SPECIFIC DAY
+  // Takes in a state object, and an appointments object
   const updateSpots = (state, appointments) => {
     const currentDayIndex = state.days.findIndex((day) => day.name === state.day);
     const currentDayObj = state.days[currentDayIndex];
+
     // Find available spots (where interview is null)
     const spots = currentDayObj.appointments.filter((id) => !appointments[id].interview).length;
+
     // copy of the currentDayObj, with the new value for available spots
     const updatedDayObj = { ...currentDayObj, spots };
+
     // copy of the current days array
     const updatedDays = [...state.days];
+
     // replace the current day object in our days array copy
     updatedDays[currentDayIndex] = updatedDayObj;
+
     // returns an array of days
     return updatedDays;
   };
@@ -67,6 +73,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    // PUT request to Axios
     return axios
       .put(`/api/appointments/${id}`, appointment)
       .then(() => {
@@ -89,6 +96,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    // DELETE request to Axios
     return axios
       .delete(`/api/appointments/${id}`, appointment)
       .then(() => {

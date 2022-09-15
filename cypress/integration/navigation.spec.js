@@ -1,3 +1,5 @@
+// CYPRESS TESTS - NAVIGATION
+
 describe("Navigation", () => {
 
   it("should visit root", () => {

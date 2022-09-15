@@ -1,3 +1,5 @@
+// CYPRESS TESTS - APPOINTMENT
+
 describe ("Appointment", () => {
   beforeEach(() => {
     cy.request("GET", "/api/debug/reset");
@@ -5,7 +7,7 @@ describe ("Appointment", () => {
     cy.contains("Monday");
    });
 
-   
+
   it("should book an interview", () => {
     cy.get("[alt=Add]")
       .first()
