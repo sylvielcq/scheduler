@@ -74,3 +74,7 @@ npm test
 npm run storybook
 ```
 
+### API Server
+
+Fork the following repo, and follow the instructions there to run the API server: 
+https://github.com/sylvielcq/scheduler-api
