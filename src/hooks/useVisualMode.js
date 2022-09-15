@@ -13,15 +13,17 @@ export default function useVisualMode(initial) {
       setMode(newMode);
       setHistory((prev) => [...prev]);
     } else {                                // if replace if false (default), add newMode to history
-    setMode(newMode);
-    setHistory((prev) => [...prev, newMode]);
+      setMode(newMode);
+      setHistory((prev) => [...prev, newMode]);
     }
   };
 
   // go back to the previous mode, remove the last mode from the history array
   const back = () => {
     if (history.length > 1) {
-      const newHistory = [...history].pop();
+      const newHistory = [...history];
+      newHistory.pop();
+      setHistory(newHistory);
       setMode(newHistory[newHistory.length - 1]);
     }
   };
