@@ -18,7 +18,14 @@ This is my fifth project at Lighthouse Labs, after [Lotide](https://github.com/s
 
 ## Final Product
 
+### Navigate the App and book a new Appointment
+![book-appointment](https://github.com/sylvielcq/scheduler/blob/master/docs/scheduler-create-appointment.gif)
 
+### Modify an Appointment
+![modify-appointment](https://github.com/sylvielcq/scheduler/blob/master/docs/scheduler-edit-appointment.gif)
+
+### Cancel an Appointment
+![cancel-appointment](https://github.com/sylvielcq/scheduler/blob/master/docs/scheduler-cancel-appointment.gif)
 
 ## Dependencies
 
