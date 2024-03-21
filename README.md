@@ -1,7 +1,5 @@
 # Interview Scheduler
 
-👋 Live version on Netlify: [LINK](https://scheduler-lhl-slcq.netlify.app/) 👋
-
 Interview Scheduler is a React application that allows users to book, modify and cancel appointments.
 
 It is built using React, Node, Express, PostgreSQL, Webpack, Axios, StoryBook, CSS, SASS, and tested with Jest (integration) and Cypress (E2E).
